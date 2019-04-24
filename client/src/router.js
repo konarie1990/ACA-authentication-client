@@ -10,12 +10,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      cookie ? (
+      localStorage.getItem("authToken") ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: "/"
+            pathname: "/dashboard",
+            state: { from: props.location }
           }}
         />
       )
@@ -26,7 +27,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 const Router = () => (
   <Switch>
     <Route exact path="/" component={Home} />
+
     <PrivateRoute path="/dashboard" component={Dashboard} />
+
     <Route component={NotFound} />
   </Switch>
 );
