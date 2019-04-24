@@ -43,7 +43,7 @@ class Login extends Component {
       })
       .then(token => {
         // create cookie here
-        document.cookie = "id_token=" + token + "; max-age=60";
+        document.cookie = "id_token=" + token + "; max-age=20";
 
         const payload = jwt.verify(token, "secret");
         return this.props.login(payload._doc);
