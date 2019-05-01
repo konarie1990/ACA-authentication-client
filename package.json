@@ -11,7 +11,8 @@
     "start:prod": "NODE_ENV=production node ./index.js",
     "deploy": "npm run client:build && npm run start:prod",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd client && npm i"
+    "postinstall": "cd client && npm i",
+    "heroku-postbuild": "npm run client:build"
   },
   "author": "",
   "license": "ISC",
